@@ -139,12 +139,7 @@ body.ready .hero .btn{animation:rise 1s 1.35s both cubic-bezier(.2,.8,.2,1)}
 .btn:hover{background:rgba(79,140,255,.2);box-shadow:0 0 34px rgba(79,140,255,.55),inset 0 0 18px rgba(79,140,255,.25)}
 .btn:hover::before{transform:translateX(120%)}
 .btn i{font-style:normal;animation:bob 1.8s ease-in-out infinite}
-.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);opacity:0}
-body.ready .scroll-hint{animation:rise 1s 2s both}
-.scroll-hint small{font-size:.65rem;letter-spacing:.34em;text-transform:uppercase}
-.mouse{width:22px;height:36px;border:1px solid var(--line2);border-radius:12px;position:relative;box-shadow:0 0 12px rgba(79,140,255,.25)}
-.mouse i{position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--blue2);box-shadow:0 0 8px var(--blue);animation:wheel 1.8s ease-in-out infinite}
-
+body.ready 
 /* ===== Laufband ===== */
 .marquee{margin:10px 0 40px;border-block:1px solid var(--line);background:linear-gradient(90deg,rgba(79,140,255,.06),transparent 30%,transparent 70%,rgba(79,140,255,.06));overflow:hidden;
   transform:skewX(var(--skew,0deg));transition:transform .2s linear}
@@ -290,7 +285,6 @@ footer p{color:var(--muted);font-size:.76rem;letter-spacing:.16em;text-transform
 @keyframes chIn{to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes flick{0%,100%{text-shadow:0 0 28px rgba(79,140,255,.9)}45%{text-shadow:0 0 44px rgba(127,212,255,1),0 0 8px #fff}50%{text-shadow:0 0 14px rgba(79,140,255,.6)}55%{text-shadow:0 0 40px rgba(127,212,255,1)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
-@keyframes wheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
 @keyframes mq{to{transform:translateX(-50%)}}
 @keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
 @keyframes sweep{0%{transform:translateX(-130%)}35%,100%{transform:translateX(130%)}}
@@ -310,8 +304,7 @@ footer p{color:var(--muted);font-size:.76rem;letter-spacing:.16em;text-transform
   .section{padding-top:74px}
   .hero{min-height:100svh;padding-top:92px}
   .halo{inset:-40px}
-  .scroll-hint{display:none}
-  .o2{display:none}
+    .o2{display:none}
   .link{display:none}
   .org{padding:34px 16px 18px}
   .card,.tl-item,.stat{padding:22px}
