@@ -322,9 +322,3 @@ footer p{color:var(--muted);font-size:.76rem;letter-spacing:.16em;text-transform
   h1{letter-spacing:.05em}
 }
 @media (hover:none){.cursor-glow{display:none}.spot::before,.spot::after{display:none}}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  .js .reveal,.js .stag>*,.js .ch,.js .w{opacity:1!important;translate:0 0!important;transform:none!important;filter:none!important}
-  .js .clip{clip-path:none}
-}

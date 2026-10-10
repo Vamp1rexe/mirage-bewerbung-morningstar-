@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   var doc = document, root = doc.documentElement, body = doc.body;
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = false; /* Animationen immer an, auch wenn das Betriebssystem 'Animationen reduzieren' meldet */
   var fine = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
   function $(s, c) { return (c || doc).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); }
