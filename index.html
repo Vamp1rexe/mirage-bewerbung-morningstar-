@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body class="is-loading">
 
@@ -40,8 +40,23 @@
       <a href="#haltung">Zusätzliches</a>
     </nav>
     <a href="#fazit" class="nav-cta">Zum Fazit</a>
-    <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button>
   </header>
+
+  <!-- Handy-Menü -->
+  <div class="mnav" id="mnav" aria-hidden="true">
+    <p class="mnav-k">Abschnitte</p>
+    <nav class="mnav-list" aria-label="Abschnitte">
+      <a href="#top"><b>00</b><span>Start<small>Lucian Morningstar</small></span></a>
+      <a href="#profil"><b>01</b><span>Info<small>OOC · IC · Voraussetzungen</small></span></a>
+      <a href="#zeiten"><b>02</b><span>Online-Zeiten<small>Woche &amp; Wochenende</small></span></a>
+      <a href="#werdegang"><b>03</b><span>Erfahrung<small>Projekte &amp; FIB</small></span></a>
+      <a href="#motivation"><b>04</b><span>Über mich<small>Warum ich mich bewerbe</small></span></a>
+      <a href="#haltung"><b>05</b><span>Zusätzliches<small>Regelwerk · Vorbereitung · Verantwortung</small></span></a>
+      <a href="#fazit"><b>06</b><span>Fazit<small>Abschluss</small></span></a>
+    </nav>
+    <div class="mnav-foot"><span>Admin · Stufe 2</span><span>Mirage DE 01</span></div>
+  </div>
 
   <main>
     <!-- HERO -->
@@ -104,8 +119,7 @@
       </div>
 
       <div class="tabs" role="tablist" data-rv>
-        <button class="on" data-f="all" role="tab" aria-selected="true">Alle</button>
-        <button data-f="ooc" role="tab" aria-selected="false">OOC</button>
+        <button class="on" data-f="ooc" role="tab" aria-selected="true">OOC</button>
         <button data-f="ic" role="tab" aria-selected="false">IC</button>
         <button data-f="req" role="tab" aria-selected="false">Voraussetzungen</button>
       </div>
@@ -310,6 +324,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
