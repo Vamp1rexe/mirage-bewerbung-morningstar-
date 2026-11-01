@@ -195,4 +195,165 @@
       if (parts.length) requestAnimationFrame(draw); else { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); }
     };
   }
+
+  /* =========================================================
+     LIVE-CODING: Typewriter, Auswahlrahmen, Cursor, Code-Fenster
+     ========================================================= */
+  if (!reduce) {
+    /* ---- Typewriter für Überschriften ---- */
+    function prepType(root) {
+      var nodes = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+      while (walker.nextNode()) if (walker.currentNode.nodeValue.trim()) nodes.push(walker.currentNode);
+      var parts = nodes.map(function (n) {
+        var on = document.createElement('span'), off = document.createElement('span');
+        off.className = 'tw-off'; off.textContent = n.nodeValue;
+        n.parentNode.insertBefore(on, n); n.parentNode.insertBefore(off, n); n.parentNode.removeChild(n);
+        return { on: on, off: off, text: off.textContent };
+      });
+      root.__tw = parts;
+    }
+    function runType(root, speed) {
+      var parts = root.__tw; if (!parts || root.__typed) return; root.__typed = true;
+      var caret = document.createElement('span'); caret.className = 'tw-caret';
+      var pi = 0, ci = 0;
+      (function step() {
+        var p = parts[pi]; if (!p) { setTimeout(function () { caret.remove(); }, 1400); return; }
+        ci++;
+        p.on.textContent = p.text.slice(0, ci); p.off.textContent = p.text.slice(ci);
+        p.on.after(caret);
+        if (ci >= p.text.length) { pi++; ci = 0; }
+        setTimeout(step, speed + Math.random() * speed);
+      })();
+    }
+    var titles = Array.prototype.slice.call(document.querySelectorAll('.title, .chain-h, .contact-card p'));
+    titles.forEach(prepType);
+    var heroName = document.querySelector('.hero-name');
+    if (heroName) prepType(heroName);
+    var tio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { runType(e.target, 38); tio.unobserve(e.target); } });
+    }, { threshold: 0.3 });
+    titles.forEach(function (t) { tio.observe(t); });
+    var waitReady = setInterval(function () {
+      if (body.classList.contains('ready')) { clearInterval(waitReady); setTimeout(function () { runType(heroName, 45); }, 500); }
+    }, 100);
+
+    /* ---- Auswahlrahmen + Cursor ---- */
+    var dev = document.createElement('div'); dev.id = 'dev'; body.appendChild(dev);
+    var cur = document.createElement('div'); cur.className = 'ghost-cur';
+    cur.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 2l7 19 2.6-7.4L20 11z" fill="#1f86ff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Lucian</span>';
+    dev.appendChild(cur);
+    var curTimer;
+    function label(el) {
+      var tag = el.tagName.toLowerCase();
+      var cls = (el.className && typeof el.className === 'string') ? el.className.split(/\s+/).filter(function (c) { return c && c !== 'in' && c !== 'on'; })[0] : '';
+      return '<' + tag + (cls ? '.' + cls : '') + '>';
+    }
+    function box(el) {
+      if (!el.isConnected) return;
+      var r = el.getBoundingClientRect();
+      if (r.width < 30 || r.height < 16) return;
+      var ty = 0, m = getComputedStyle(el).transform;
+      if (m && m !== 'none') { var v = m.match(/-?[\d.]+/g); if (v) ty = parseFloat(v[v.length - 1]) || 0; }
+      var x = r.left + window.scrollX, y = r.top + window.scrollY - ty;
+      var b = document.createElement('div'); b.className = 'sel';
+      b.style.cssText = 'left:' + x + 'px;top:' + y + 'px;width:' + r.width + 'px;height:' + r.height + 'px';
+      b.innerHTML = '<i></i><i></i><i></i><i></i><b></b><em></em>';
+      b.querySelector('b').textContent = label(el);
+      b.querySelector('em').textContent = Math.round(r.width) + ' × ' + Math.round(r.height);
+      dev.appendChild(b);
+      cur.classList.add('on');
+      cur.style.transform = 'translate(' + (x + r.width - 8) + 'px,' + (y + r.height - 6) + 'px)';
+      clearTimeout(curTimer); curTimer = setTimeout(function () { cur.classList.remove('on'); }, 2600);
+      setTimeout(function () { b.classList.add('out'); setTimeout(function () { b.remove(); }, 520); }, 1300);
+    }
+    var boxSel = '.hero-visual,.hero-stats,.tabs,.tile,.big-num,.row,.tl-row,.chain,.reel-frame,.letter,.steps li,.quote,.val,.contact-list li,.contact-card,.foot-title';
+    var bio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target, d = parseFloat(el.style.getPropertyValue('--d')) || 0;
+        setTimeout(function () { box(el); }, d * 1000 + 120);
+        bio.unobserve(el);
+      });
+    }, { threshold: 0.25 });
+    var startBoxes = setInterval(function () {
+      if (!body.classList.contains('ready')) return;
+      clearInterval(startBoxes);
+      document.querySelectorAll(boxSel).forEach(function (el) { bio.observe(el); });
+    }, 150);
+
+    /* ---- Code-Fenster ---- */
+    var snippets = {
+      top: ['<!-- Bewerbung · Mirage DE 01 -->', '<section class="hero">', '  <p class="script">Hallo, ich bin</p>', '  <h1>Lucian Morningstar.</h1>', '  <p class="role">Administrator / Stufe 2</p>', '  <img src="assets/avatar.webp">', '</section>'],
+      profil: ['<section id="info">', '  <h2>Info <b>Blatt.</b></h2>', '  <dl class="tiles">', '    <dt>Name</dt>      <dd>Noxiryn</dd>', '    <dt>Alter</dt>     <dd>18 Jahre</dd>', '    <dt>Discord</dt>   <dd>noxiryn.tv</dd>', '    <dt>IC-Name</dt>   <dd>Lucian Morningstar</dd>', '    <dt>Cheating-Bans</dt> <dd>Keine</dd>', '  </dl>', '</section>'],
+      zeiten: ['/* Online-Zeiten */', '.woche {', '  start: 17:00;', '  ende: 22:00;     /* 5 Std. */', '}', '.wochenende {', '  start: 12:00;', '  ende: 02:00/03:00; /* 10–20 Std. */', '}'],
+      werdegang: ['const erfahrung = {', '  rp: "GrandRP, Majestic, Narco City u. a.",', '  admin: { server: "StageV", jahre: 2 },', '  fib: {', '    dn: 23, rang: 26,', '    titel: "Chief of Integrity",', '    vorgesetzter: "DN 01 · Jonas Rak"', '  }', '};'],
+      motivation: ['<article class="brief">', '  <p>Hallo liebes Admin-Team,</p>', '  <p>… Position <b>Administrator Stufe 2</b> …</p>', '  <ul class="staerken">', '    <li>Abläufe vereinfachen</li>', '    <li>Schnell eingearbeitet</li>', '    <li>Ruhe unter Druck</li>', '  </ul>', '</article>'],
+      haltung: ['const zusatz = [', '  "Regelwerk",', '  "Vorbereitung",', '  "Verantwortung"', '];', '', 'zusatz.forEach(p => render(p));'],
+      fazit: ['<section id="fazit">', '  <h2>Fazit.</h2>', '  <p>Über ein Gespräch würde ich mich', '     sehr freuen …</p>', '  <cite>Lucian Morningstar</cite>', '</section>', '<!-- deploy: done ✓ -->']
+    };
+    var files = { top: 'index.html', profil: 'index.html', zeiten: 'style.css', werdegang: 'script.js', motivation: 'index.html', haltung: 'script.js', fazit: 'index.html' };
+    function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    function hl(t) {
+      var ci = t.search(/\/\*|<!--/);
+      var code = ci >= 0 ? t.slice(0, ci) : t, cm = ci >= 0 ? t.slice(ci) : '';
+      var re = /("[^"]*")|(<\/?)([a-zA-Z0-9]+)|\b(class|src|id)(?==)|\b(const|forEach|render)\b|^(\s*)([a-z-]+)(?=:)/g;
+      var out = '', last = 0, m;
+      while ((m = re.exec(code))) {
+        out += esc(code.slice(last, m.index));
+        if (m[1]) out += '<span class="st">' + esc(m[1]) + '</span>';
+        else if (m[3]) out += esc(m[2]) + '<span class="tg">' + m[3] + '</span>';
+        else if (m[4]) out += '<span class="at">' + m[4] + '</span>';
+        else if (m[5]) out += '<span class="tg">' + m[5] + '</span>';
+        else if (m[7]) out += m[6] + '<span class="pr">' + m[7] + '</span>';
+        last = re.lastIndex;
+        if (m[0] === '') re.lastIndex++;
+      }
+      out += esc(code.slice(last));
+      if (cm) out += '<span class="cm">' + esc(cm) + '</span>';
+      return out;
+    }
+    var ide = document.createElement('div'); ide.className = 'ide'; ide.setAttribute('aria-hidden', 'true');
+    ide.innerHTML = '<div class="ide-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ide-file">index.html</span><span class="ide-live">live</span><button class="ide-btn" type="button" title="Minimieren">–</button></div><div class="ide-body"></div>';
+    body.appendChild(ide); body.classList.add('has-ide');
+    var ideBody = ide.querySelector('.ide-body'), ideFile = ide.querySelector('.ide-file');
+    var minBtn = ide.querySelector('.ide-btn');
+    try { if (localStorage.getItem('ideMin') === '1') { ide.classList.add('min'); minBtn.textContent = '+'; } } catch (e) {}
+    minBtn.addEventListener('click', function () {
+      var m = ide.classList.toggle('min'); minBtn.textContent = m ? '+' : '–';
+      try { localStorage.setItem('ideMin', m ? '1' : '0'); } catch (e) {}
+    });
+    var job = 0, curKey = null;
+    function typeSnippet(key) {
+      if (key === curKey || !snippets[key]) return; curKey = key;
+      var my = ++job, lines = snippets[key];
+      ideFile.textContent = files[key];
+      ideBody.innerHTML = '';
+      var li = 0, ci = 0, row, span;
+      (function step() {
+        if (my !== job) return;
+        if (li >= lines.length) { if (row) row.classList.add('cur'); return; }
+        if (ci === 0) {
+          if (row) { row.classList.remove('cur'); span.innerHTML = hl(lines[li - 1]); }
+          row = document.createElement('div'); row.className = 'ide-line cur';
+          row.innerHTML = '<u>' + (li + 1) + '</u><span></span>'; span = row.lastChild;
+          ideBody.appendChild(row);
+          var over = ideBody.scrollHeight - ideBody.clientHeight; if (over > 0) ideBody.scrollTop = over;
+        }
+        var line = lines[li];
+        ci = Math.min(line.length, ci + 1 + (Math.random() < .3 ? 1 : 0));
+        span.textContent = line.slice(0, ci);
+        if (ci >= line.length) { li++; ci = 0; if (li >= lines.length) { span.innerHTML = hl(line); } setTimeout(step, 90); }
+        else setTimeout(step, 14 + Math.random() * 26);
+      })();
+    }
+    var sio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) typeSnippet(e.target.id); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    var startIde = setInterval(function () {
+      if (!body.classList.contains('ready')) return;
+      clearInterval(startIde);
+      setTimeout(function () { ide.classList.add('show'); typeSnippet('top'); }, 900);
+      document.querySelectorAll('main section[id]').forEach(function (sec) { sio.observe(sec); });
+    }, 150);
+  }
 })();
