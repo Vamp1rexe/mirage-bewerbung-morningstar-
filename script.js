@@ -143,11 +143,17 @@
     btn.addEventListener('click', function () {
       var f = btn.getAttribute('data-f');
       tabs.forEach(function (b) { var on = b === btn; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
-      tiles.forEach(function (t, i) {
+      var shown = [];
+      tiles.forEach(function (t) {
         var hit = f === 'all' || t.getAttribute('data-c') === f;
-        t.style.transitionDelay = (i * 30) + 'ms';
+        t.classList.remove('pop');
         t.classList.toggle('off', !hit);
+        if (hit) shown.push(t);
       });
+      void document.body.offsetHeight;
+      shown.forEach(function (t, i) { t.style.setProperty('--pd', (i * 70) + 'ms'); t.classList.add('pop'); });
+      if (window.__devBox) shown.forEach(function (t, i) { setTimeout(function () { window.__devBox(t); }, 420 + i * 90); });
+      if (window.__devType) window.__devType('f-' + f);
     });
   });
 
@@ -266,6 +272,7 @@
       clearTimeout(curTimer); curTimer = setTimeout(function () { cur.classList.remove('on'); }, 2600);
       setTimeout(function () { b.classList.add('out'); setTimeout(function () { b.remove(); }, 520); }, 1300);
     }
+    window.__devBox = box;
     var boxSel = '.hero-visual,.hero-stats,.tabs,.tile,.big-num,.row,.tl-row,.chain,.reel-frame,.letter,.steps li,.quote,.val,.contact-list li,.contact-card,.foot-title';
     var bio = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
@@ -291,10 +298,14 @@
       haltung: ['const zusatz = [', '  "Regelwerk",', '  "Vorbereitung",', '  "Verantwortung"', '];', '', 'zusatz.forEach(p => render(p));'],
       fazit: ['<section id="fazit">', '  <h2>Fazit.</h2>', '  <p>Über ein Gespräch würde ich mich', '     sehr freuen …</p>', '  <cite>Lucian Morningstar</cite>', '</section>', '<!-- deploy: done ✓ -->']
     };
-    var files = { top: 'index.html', profil: 'index.html', zeiten: 'style.css', werdegang: 'script.js', motivation: 'index.html', haltung: 'script.js', fazit: 'index.html' };
+    snippets['f-all'] = ['// Filter: Alle', 'tiles.forEach(t => t.show());'];
+    snippets['f-ooc'] = ['// Filter: OOC', 'tiles', '  .filter(t => t.type === "ooc")', '  .forEach(t => t.show());', '// Name · Alter · Discord'];
+    snippets['f-ic'] = ['// Filter: IC', 'tiles', '  .filter(t => t.type === "ic")', '  .forEach(t => t.show());', '// Lucian Morningstar · ID'];
+    snippets['f-req'] = ['// Filter: Voraussetzungen', 'tiles', '  .filter(t => t.type === "req")', '  .forEach(t => t.show());', '// Kontolevel · Bans · Regelbrüche'];
+    var files = { 'f-all': 'script.js', 'f-ooc': 'script.js', 'f-ic': 'script.js', 'f-req': 'script.js', top: 'index.html', profil: 'index.html', zeiten: 'style.css', werdegang: 'script.js', motivation: 'index.html', haltung: 'script.js', fazit: 'index.html' };
     function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
     function hl(t) {
-      var ci = t.search(/\/\*|<!--/);
+      var ci = t.search(/\/\*|<!--|\/\//);
       var code = ci >= 0 ? t.slice(0, ci) : t, cm = ci >= 0 ? t.slice(ci) : '';
       var re = /("[^"]*")|(<\/?)([a-zA-Z0-9]+)|\b(class|src|id)(?==)|\b(const|forEach|render)\b|^(\s*)([a-z-]+)(?=:)/g;
       var out = '', last = 0, m;
@@ -312,16 +323,36 @@
       if (cm) out += '<span class="cm">' + esc(cm) + '</span>';
       return out;
     }
-    var ide = document.createElement('div'); ide.className = 'ide'; ide.setAttribute('aria-hidden', 'true');
-    ide.innerHTML = '<div class="ide-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ide-file">index.html</span><span class="ide-live">live</span><button class="ide-btn" type="button" title="Minimieren">–</button></div><div class="ide-body"></div>';
-    body.appendChild(ide); body.classList.add('has-ide');
+    var ide = document.createElement('div'); ide.className = 'ide'; ide.setAttribute('role', 'region'); ide.setAttribute('aria-label', 'Live-Code');
+    ide.innerHTML = '<div class="ide-bar"><span class="dots">' +
+      '<button type="button" data-a="close" title="Schließen" aria-label="Code-Fenster schließen">×</button>' +
+      '<button type="button" data-a="min" title="Minimieren" aria-label="Code-Fenster minimieren">–</button>' +
+      '<button type="button" data-a="max" title="Vergrößern" aria-label="Code-Fenster vergrößern">+</button>' +
+      '</span><span class="ide-file">index.html</span><span class="ide-live">live</span></div><div class="ide-body"></div>';
+    var launch = document.createElement('button'); launch.type = 'button'; launch.className = 'ide-launch';
+    launch.setAttribute('aria-label', 'Code-Fenster öffnen'); launch.innerHTML = '&lt;/&gt;';
+    body.appendChild(ide); body.appendChild(launch); body.classList.add('has-ide');
     var ideBody = ide.querySelector('.ide-body'), ideFile = ide.querySelector('.ide-file');
-    var minBtn = ide.querySelector('.ide-btn');
-    try { if (localStorage.getItem('ideMin') === '1') { ide.classList.add('min'); minBtn.textContent = '+'; } } catch (e) {}
-    minBtn.addEventListener('click', function () {
-      var m = ide.classList.toggle('min'); minBtn.textContent = m ? '+' : '–';
-      try { localStorage.setItem('ideMin', m ? '1' : '0'); } catch (e) {}
+    function ideState(st) {
+      ide.classList.toggle('min', st === 'min');
+      ide.classList.toggle('max', st === 'max');
+      ide.classList.toggle('closed', st === 'closed');
+      launch.classList.toggle('show', st === 'closed');
+      body.classList.toggle('has-ide', st !== 'closed');
+      try { localStorage.setItem('ideState', st); } catch (e) {}
+      if (st === 'max') { var o = ideBody.scrollHeight - ideBody.clientHeight; ideBody.scrollTop = o > 0 ? o : 0; }
+    }
+    ide.querySelectorAll('.dots button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var a = btn.getAttribute('data-a');
+        if (a === 'close') ideState('closed');
+        else if (a === 'min') ideState(ide.classList.contains('min') ? 'normal' : 'min');
+        else ideState(ide.classList.contains('max') ? 'normal' : 'max');
+      });
     });
+    ide.querySelector('.ide-bar').addEventListener('dblclick', function () { ideState(ide.classList.contains('max') ? 'normal' : 'max'); });
+    launch.addEventListener('click', function () { ideState('normal'); });
+    try { var saved = localStorage.getItem('ideState'); if (saved) ideState(saved); } catch (e) {}
     var job = 0, curKey = null;
     function typeSnippet(key) {
       if (key === curKey || !snippets[key]) return; curKey = key;
@@ -346,6 +377,7 @@
         else setTimeout(step, 14 + Math.random() * 26);
       })();
     }
+    window.__devType = function (k) { curKey = null; typeSnippet(k); };
     var sio = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) typeSnippet(e.target.id); });
     }, { rootMargin: '-45% 0px -45% 0px' });

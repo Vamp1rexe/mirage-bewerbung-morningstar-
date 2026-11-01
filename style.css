@@ -165,7 +165,6 @@ body.is-loading{overflow:hidden}
 .tile b{font-family:var(--display);font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.05;letter-spacing:.01em;position:relative;word-break:break-word}
 .tile b.ok{color:var(--blue-2)}
 .t-c{position:relative;align-self:flex-start;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-2);border:1px solid rgba(95,182,255,.3);padding:3px 8px}
-.tile.off{opacity:.12;transform:scale(.97);pointer-events:none}
 
 /* ---------- 02 Zeiten ---------- */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,7vw,110px);align-items:start}
@@ -341,15 +340,28 @@ body{position:relative}
 .ide{position:fixed;right:20px;bottom:20px;z-index:45;width:340px;background:rgba(6,9,18,.92);border:1px solid var(--line-2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 24px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(31,134,255,.08);font:11.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;transform:translateY(calc(100% + 40px));transition:transform .8s var(--ease)}
 .ide.show{transform:none}
 .ide.min .ide-body{display:none}
+.ide.closed{transform:translateY(calc(100% + 40px))!important}
+.ide-body{transition:height .5s var(--ease)}
+.ide.max{width:min(560px,calc(100vw - 40px))}
+.ide.max .ide-body{height:min(380px,60vh)}
+.ide-launch{position:fixed;right:20px;bottom:20px;z-index:45;width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;font:700 13px/1 ui-monospace,Menlo,Consolas,monospace;box-shadow:0 10px 30px -8px var(--glow);transform:scale(0);transition:transform .5s var(--ease)}
+.ide-launch.show{transform:scale(1)}
+.ide-launch:hover{background:var(--blue-2)}
+.tiles .tile.off{display:none}
+.tile.pop{animation:tilePop .6s var(--ease) both;animation-delay:var(--pd,0ms)}
+@keyframes tilePop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
 .ide-bar{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:11px}
-.ide-bar .dots{display:flex;gap:5px}
-.ide-bar .dots i{width:9px;height:9px;border-radius:50%;background:#1b2740}
-.ide-bar .dots i:first-child{background:var(--blue)}
+.ide-bar .dots{display:flex;gap:7px}
+.ide-bar .dots button{width:13px;height:13px;border-radius:50%;padding:0;display:grid;place-items:center;font:700 10px/1 var(--body);color:transparent;position:relative;transition:transform .2s,color .2s,box-shadow .2s}
+.ide-bar .dots button::before{content:"";position:absolute;inset:-7px}
+.ide-bar .dots button[data-a=close]{background:#1f86ff}
+.ide-bar .dots button[data-a=min]{background:#5fb6ff}
+.ide-bar .dots button[data-a=max]{background:#b9dcff}
+.ide-bar .dots:hover button,.ide-bar .dots button:focus-visible{color:#04060c}
+.ide-bar .dots button:hover{transform:scale(1.18);box-shadow:0 0 12px var(--blue)}
 .ide-file{color:var(--text)}
 .ide-live{margin-left:auto;display:flex;align-items:center;gap:6px;color:var(--blue-2)}
 .ide-live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue-2);animation:blink 1.2s steps(2) infinite}
-.ide-btn{width:22px;height:22px;display:grid;place-items:center;color:var(--muted);pointer-events:auto;border:1px solid var(--line);font-size:12px;line-height:1}
-.ide-btn:hover{color:var(--text);border-color:var(--blue)}
 .ide-body{padding:8px 0;height:150px;overflow:hidden;position:relative}
 .ide-line{display:grid;grid-template-columns:34px 1fr;white-space:pre;color:#c9d2e3}
 .ide-line u{text-decoration:none;color:#3a4763;text-align:right;padding-right:12px;user-select:none}
@@ -357,7 +369,12 @@ body{position:relative}
 .ide-line.cur span::after{content:"";display:inline-block;width:7px;height:14px;background:var(--blue-2);vertical-align:-2px;margin-left:1px;animation:caret .8s steps(2) infinite}
 @media (max-width:860px){
   .ide{left:8px;right:8px;bottom:8px;width:auto;font-size:10px}
-  .ide-bar{padding:5px 8px}
+  .ide-bar{padding:6px 8px}
+  .ide-bar .dots{gap:12px}
+  .ide-bar .dots button{width:15px;height:15px}
+  .ide.max{width:auto}
+  .ide.max .ide-body{height:46vh}
+  .ide-launch{right:12px;bottom:12px}
   .ide-body{height:54px;padding:3px 0}
   .ide-line{grid-template-columns:26px 1fr}
   .ide-line u{padding-right:8px}
