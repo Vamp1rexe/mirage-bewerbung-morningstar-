@@ -327,10 +327,7 @@ body.is-loading{overflow:hidden}
   .hero-stats{gap:18px}
   .hero-stats li{flex-direction:column;align-items:flex-start;gap:4px}
 }
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  #trail{display:none}
-}
+
 
 /* ---------- Live-Coding ---------- */
 body{position:relative}
@@ -401,7 +398,6 @@ body{position:relative}
   .hero-giant span{font-size:24vw}
   .hero-giant{padding-top:clamp(120px,24vh,200px)}
 }
-@media (prefers-reduced-motion:reduce){#dev{display:none}}
 
 /* ---------- Bau-Crew ---------- */
 .js .bld:not(.built):not(.building){opacity:0}

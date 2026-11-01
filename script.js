@@ -2,7 +2,7 @@
   'use strict';
   var doc = document.documentElement;
   var body = document.body;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = /[?&]still\b/.test(location.search); // Animationen immer an; mit ?still abschaltbar
   var finePointer = window.matchMedia('(pointer: fine)').matches;
 
   /* ---------- Start ---------- */
