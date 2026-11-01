@@ -3,308 +3,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Lucian Morningstar | Admin-Bewerbung Mirage DE 01</title>
-  <meta name="description" content="Bewerbung als Administrator Stufe 2 auf Mirage DE 01 – Lucian Morningstar.">
-  <meta name="theme-color" content="#03050b">
-  <meta property="og:title" content="Lucian Morningstar | Admin-Bewerbung Mirage DE 01">
-  <meta property="og:description" content="Bewerbung als Administrator Stufe 2 auf Mirage DE 01.">
+  <title>Lucian Morningstar — Bewerbung Administrator Stufe 2</title>
+  <meta name="description" content="Lucian Morningstar bewirbt sich als Administrator Stufe 2 auf Mirage DE 01.">
+  <meta name="theme-color" content="#04060c">
+  <meta property="og:title" content="Lucian Morningstar — Bewerbung Administrator Stufe 2">
+  <meta property="og:description" content="Bewerbung um die Position Administrator Stufe 2 auf Mirage DE 01.">
   <meta property="og:image" content="assets/avatar-480.webp">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body class="is-loading">
 
-  <!-- Ladescreen -->
-  <div id="loader" aria-hidden="true">
-    <div class="ld-ring"><span>L</span></div>
-    <p class="ld-name">Lucian Morningstar</p>
-    <div class="ld-bar"><i class="fill"></i></div>
-    <p class="ld-pct"><span class="pct">0</span>%</p>
+  <!-- Intro -->
+  <div id="intro" aria-hidden="true">
+    <div class="intro-top"><span>Mirage DE 01</span><span>Bewerbung 2026</span></div>
+    <p class="intro-name"><span>Lucian</span><span class="b">Morningstar.</span></p>
+    <div class="intro-bot"><span>Wird geladen</span><span class="intro-pct"><b>0</b>%</span></div>
+    <i class="intro-bar"></i>
   </div>
 
-  <canvas id="fx" aria-hidden="true"></canvas>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="topbar" aria-hidden="true"><i></i></div>
-
-  <!-- Seitliche Punkt-Navigation -->
-  <aside class="rail" aria-label="Abschnitte">
-    <div class="rail-line"><i></i></div>
-    <a href="#top" data-t="Start"></a>
-    <a href="#info" data-t="Info"></a>
-    <a href="#zeiten" data-t="Zeiten"></a>
-    <a href="#erfahrung" data-t="Erfahrung"></a>
-    <a href="#ueber-mich" data-t="Über mich"></a>
-    <a href="#zusatz" data-t="Zusatz"></a>
-    <a href="#fazit" data-t="Fazit"></a>
-  </aside>
+  <div class="progress" aria-hidden="true"><i></i></div>
+  <canvas id="trail" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
-    <a href="#top" class="brand"><img class="mono-img" src="assets/avatar-96.webp" alt="" width="34" height="34"><span>Lucian Morningstar</span></a>
-    <button class="nav-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-    <nav id="menu">
-      <a href="#info">Info</a>
-      <a href="#zeiten">Online-Zeiten</a>
-      <a href="#erfahrung">Erfahrung</a>
-      <a href="#ueber-mich">Über mich</a>
-      <a href="#fazit">Fazit</a>
+    <a href="#top" class="logo">LUCIAN<span>.</span></a>
+    <nav id="menu" aria-label="Hauptnavigation">
+      <a href="#profil">Profil</a>
+      <a href="#zeiten">Verfügbarkeit</a>
+      <a href="#werdegang">Werdegang</a>
+      <a href="#motivation">Motivation</a>
+      <a href="#haltung">Haltung</a>
     </nav>
+    <a href="#fazit" class="nav-cta">Zum Fazit</a>
+    <button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </header>
 
   <main>
     <!-- HERO -->
     <section class="hero" id="top">
-      <div class="rays" aria-hidden="true"></div>
-      <div class="hero-inner">
-        <div class="avatar-wrap" data-speed="-0.12">
-          <span class="orbit o1" aria-hidden="true"></span>
-          <span class="orbit o2" aria-hidden="true"></span>
-          <span class="halo" aria-hidden="true"></span>
-          <div class="avatar">
-            <picture>
-              <source media="(max-width:820px)" srcset="assets/avatar-480.webp" type="image/webp">
-              <source srcset="assets/avatar-1254.webp" type="image/webp">
-              <img data-critical src="assets/avatar.png" alt="Lucian Morningstar" width="1254" height="1254" fetchpriority="high" decoding="async">
-            </picture>
+      <div class="hero-giant" aria-hidden="true"><span data-drift="-0.25">BEWERBUNG</span></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="script" data-in="1">Hallo, ich bin</p>
+          <h1 class="hero-name">
+            <span class="ln"><span data-in="2">LUCIAN</span></span>
+            <span class="ln"><span data-in="3">MORNINGSTAR<em>.</em></span></span>
+          </h1>
+          <p class="hero-role" data-in="4">Administrator <span>/</span> Stufe 2</p>
+          <p class="hero-lead" data-in="5">Meine Bewerbung für das Admin-Team von Mirage DE 01: viel Erfahrung aus verschiedenen Projekten, ein ruhiger Kopf in hektischen Momenten und die Bereitschaft, Verantwortung zu tragen.</p>
+          <div class="hero-act" data-in="6">
+            <a href="#profil" class="btn"><span>Bewerbung ansehen</span><i>→</i></a>
+            <a href="#motivation" class="play"><i>▶</i><span>Warum ich?</span></a>
           </div>
         </div>
-        <p class="eyebrow">Lucian Morningstar</p>
-        <h1>
-          <span class="l1" data-split>Administrator</span>
-          <span class="l2" data-split>Stufe 2</span>
-        </h1>
-        <div class="year" data-from="2000" data-to="2026" aria-label="2026"><span aria-hidden="true">2026</span></div>
-        <div class="line"></div>
-        <p class="sub">Bewerbung · <strong>Mirage DE 01</strong></p>
-        <a href="#info" class="btn mag"><span>Bewerbung lesen</span><i>↓</i></a>
+
+        <div class="hero-visual" data-in="3">
+          <div class="hv-ring" aria-hidden="true"></div>
+          <picture>
+            <source media="(max-width:820px)" srcset="assets/avatar-480.webp" type="image/webp">
+            <source srcset="assets/avatar-1254.webp" type="image/webp">
+            <img src="assets/avatar.png" alt="Lucian Morningstar" width="1254" height="1254" fetchpriority="high" decoding="async">
+          </picture>
+          <span class="hv-tag">IC · Lucian Morningstar</span>
+        </div>
+
+        <ul class="hero-stats">
+          <li data-in="5"><b><span class="count" data-to="1000">0</span>+</b><span>Stunden<br>Rollenspiel</span></li>
+          <li data-in="6"><b>~<span class="count" data-to="2">0</span></b><span>Jahre im<br>Admin-Team</span></li>
+          <li data-in="7"><b><span class="count" data-to="4">0</span>+</b><span>Projekte<br>gespielt</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-foot">
+        <span>Mirage DE 01</span>
+        <span class="scroll-hint"><i></i>Scrollen</span>
+        <span>Stand 2026</span>
       </div>
     </section>
 
     <!-- LAUFBAND -->
-    <div class="marquee" aria-hidden="true">
-      <div class="mq"><div class="mq-in">
-        <span>Lucian Morningstar</span><i>✦</i><span class="o">Administrator Stufe 2</span><i>✦</i><span>Mirage DE 01</span><i>✦</i>
-        <span>Lucian Morningstar</span><i>✦</i><span class="o">Administrator Stufe 2</span><i>✦</i><span>Mirage DE 01</span><i>✦</i>
-        <span>Lucian Morningstar</span><i>✦</i><span class="o">Administrator Stufe 2</span><i>✦</i><span>Mirage DE 01</span><i>✦</i>
-        <span>Lucian Morningstar</span><i>✦</i><span class="o">Administrator Stufe 2</span><i>✦</i><span>Mirage DE 01</span><i>✦</i>
-      </div></div>
+    <div class="ticker" aria-label="Projekte">
+      <div class="ticker-track">
+        <span>GrandRP</span><i>✦</i><span class="hl">Majestic</span><i>✦</i><span>StageV</span><i>✦</i><span class="hl">Narco City</span><i>✦</i><span>Mirage DE 01</span><i>✦</i>
+        <span>GrandRP</span><i>✦</i><span class="hl">Majestic</span><i>✦</i><span>StageV</span><i>✦</i><span class="hl">Narco City</span><i>✦</i><span>Mirage DE 01</span><i>✦</i>
+      </div>
     </div>
 
-    <div class="wrap">
-      <!-- INFO -->
-      <section id="info" class="section">
-        <header class="sh">
-          <span class="num" data-speed="0.08">01</span>
-          <div class="sh-t">
-            <h2 class="reveal clip">Info <span class="grad">Blatt</span></h2>
-            <div class="sh-line"></div>
-          </div>
-        </header>
-        <div class="grid two">
-          <article class="card spot tilt reveal from-l">
-            <h3>Informationen <small>IC / OOC</small></h3>
-            <dl class="stag">
-              <div><dt>Name</dt><dd>Noxiryn</dd></div>
-              <div><dt>Alter</dt><dd>18 Jahre</dd></div>
-              <div><dt>Discord</dt><dd>noxiryn.tv</dd></div>
-              <div><dt>IC-Name</dt><dd>Lucian Morningstar</dd></div>
-              <div><dt>ID</dt><dd>–</dd></div>
-            </dl>
+    <!-- 01 PROFIL -->
+    <section class="sec" id="profil">
+      <div class="sec-head">
+        <p class="kicker" data-rv><b>01</b> / Profil</p>
+        <h2 class="title"><span class="ln"><span data-rv>WER SICH HIER</span></span><span class="ln"><span data-rv class="blue">BEWIRBT.</span></span></h2>
+      </div>
+
+      <div class="tabs" role="tablist" data-rv>
+        <button class="on" data-f="all" role="tab" aria-selected="true">Alle</button>
+        <button data-f="ooc" role="tab" aria-selected="false">OOC</button>
+        <button data-f="ic" role="tab" aria-selected="false">IC</button>
+        <button data-f="req" role="tab" aria-selected="false">Voraussetzungen</button>
+      </div>
+
+      <div class="tiles">
+        <article class="tile" data-c="ooc" data-rv><span class="t-k">Name</span><b>Noxiryn</b><span class="t-c">OOC</span></article>
+        <article class="tile" data-c="ooc" data-rv><span class="t-k">Alter</span><b>18 Jahre</b><span class="t-c">OOC</span></article>
+        <article class="tile" data-c="ooc" data-rv><span class="t-k">Discord</span><b>noxiryn.tv</b><span class="t-c">OOC</span></article>
+        <article class="tile wide" data-c="ic" data-rv><span class="t-k">Charakter</span><b>Lucian Morningstar</b><span class="t-c">IC</span></article>
+        <article class="tile" data-c="ic" data-rv><span class="t-k">ID</span><b>–</b><span class="t-c">IC</span></article>
+        <article class="tile" data-c="req" data-rv><span class="t-k">Kontolevel</span><b>–</b><span class="t-c">Voraussetzung</span></article>
+        <article class="tile" data-c="req" data-rv><span class="t-k">Bans wegen Cheating</span><b class="ok">Keine</b><span class="t-c">Voraussetzung</span></article>
+        <article class="tile" data-c="req" data-rv><span class="t-k">Regelbrüche</span><b class="ok">Keine</b><span class="t-c">Voraussetzung</span></article>
+      </div>
+    </section>
+
+    <!-- 02 VERFÜGBARKEIT -->
+    <section class="sec split" id="zeiten">
+      <div class="split-l">
+        <p class="kicker" data-rv><b>02</b> / Verfügbarkeit</p>
+        <h2 class="title"><span class="ln"><span data-rv>DA, WENN</span></span><span class="ln"><span data-rv class="blue">ES ZÄHLT.</span></span></h2>
+        <div class="big-num" data-rv>
+          <svg class="laurel l" viewBox="0 0 40 90" aria-hidden="true"><path d="M34 86C14 70 6 48 10 6M10 22c-6-2-9-7-8-13 6 1 9 6 8 13zm2 16c-6-1-10-6-10-12 6 0 10 5 10 12zm3 15c-6 0-10-4-11-10 6-1 10 4 11 10zm5 14c-6 1-11-3-12-9 6-1 11 3 12 9zm7 11c-5 2-11-1-13-6 6-2 11 1 13 6z"/></svg>
+          <div><b><span class="count" data-to="20">0</span></b><small>Std. am Wochenende*</small></div>
+          <svg class="laurel r" viewBox="0 0 40 90" aria-hidden="true"><path d="M34 86C14 70 6 48 10 6M10 22c-6-2-9-7-8-13 6 1 9 6 8 13zm2 16c-6-1-10-6-10-12 6 0 10 5 10 12zm3 15c-6 0-10-4-11-10 6-1 10 4 11 10zm5 14c-6 1-11-3-12-9 6-1 11 3 12 9zm7 11c-5 2-11-1-13-6 6-2 11 1 13 6z"/></svg>
+        </div>
+        <p class="note" data-rv>* je nach Tag zwischen 10 und 20 Stunden. Unter der Woche bin ich abends verlässlich erreichbar.</p>
+      </div>
+
+      <div class="split-r">
+        <p class="list-h" data-rv>Wann ich online bin</p>
+        <div class="row" data-rv>
+          <div class="row-t"><b>Montag – Freitag</b><span>17:00 – 22:00 Uhr</span></div>
+          <div class="row-v">5 Std.</div>
+          <div class="day"><i style="--s:70.83%;--w:20.83%"></i></div>
+        </div>
+        <div class="row" data-rv>
+          <div class="row-t"><b>Samstag – Sonntag</b><span>12:00 – 02:00 / 03:00 Uhr</span></div>
+          <div class="row-v">10–20 Std.</div>
+          <div class="day"><i class="open" style="--s:50%;--w:50%"></i></div>
+        </div>
+        <div class="ticks" data-rv aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+      </div>
+    </section>
+
+    <!-- 03 WERDEGANG -->
+    <section class="sec" id="werdegang">
+      <div class="sec-head row-head">
+        <div>
+          <p class="kicker" data-rv><b>03</b> / Werdegang</p>
+          <h2 class="title"><span class="ln"><span data-rv>VOM SPIELER.</span></span><span class="ln"><span data-rv class="blue">ZUM TEAM.</span></span></h2>
+        </div>
+        <p class="sec-lead" data-rv>Erfahrung aus offiziellen wie auch inoffiziellen Organisationen – vom Rollenspiel bis zur Leitung.</p>
+      </div>
+
+      <div class="journey">
+        <div class="tl">
+          <span class="tl-line" aria-hidden="true"><i></i></span>
+          <article class="tl-row" data-rv>
+            <span class="tl-when">Rollenspiel</span>
+            <div><h3>GrandRP, Majestic, Narco City u. a.</h3><p>Mehrere tausend Stunden RP quer durch verschiedene Projekte.</p></div>
           </article>
-          <article class="card spot tilt reveal from-r">
-            <h3>Voraussetzungen</h3>
-            <dl class="stag">
-              <div><dt>Kontolevel</dt><dd>–</dd></div>
-              <div><dt>Cheating-Bans</dt><dd><span class="ok">Keine</span></dd></div>
-              <div><dt>Regelverstöße</dt><dd><span class="ok">Keine</span></dd></div>
-            </dl>
+          <article class="tl-row" data-rv>
+            <span class="tl-when">StageV</span>
+            <div><h3>Admin &amp; Admin-Leitung</h3><p>Rund zwei Jahre im Team, zuletzt in leitender Funktion. Den Server gibt es heute nicht mehr.</p></div>
+          </article>
+          <article class="tl-row now" data-rv>
+            <span class="tl-when">Mirage DE 01</span>
+            <div><h3>FIB · Chief of Integrity</h3><p>Abteilungsleitung, HR und Mitglied im High Command.</p></div>
           </article>
         </div>
-      </section>
 
-      <!-- ZEITEN -->
-      <section id="zeiten" class="section">
-        <header class="sh">
-          <span class="num" data-speed="0.08">02</span>
-          <div class="sh-t">
-            <h2 class="reveal clip">Online <span class="grad">Zeiten</span></h2>
-            <div class="sh-line"></div>
+        <aside class="chain" data-rv>
+          <p class="chain-h"><span>KLARE</span> <span class="blue">STRUKTUR.</span></p>
+          <p class="chain-sub">FIB — Befehlskette</p>
+          <div class="person">
+            <span class="p-tag">Ich</span>
+            <h4>DN 23 · Lucian Morningstar</h4>
+            <p>Rang 26 · Chief of Integrity</p>
+            <ul class="chips"><li>HR-Leitung</li><li>HR - Division Chief</li><li>High Command</li><li>Abteilungsleiter</li></ul>
           </div>
-        </header>
-        <div class="grid two">
-          <article class="card spot tilt time reveal from-l">
-            <p class="label">Unter der Woche</p>
-            <div class="gauge">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <circle class="trk" cx="60" cy="60" r="54"/>
-                <circle class="arc" cx="60" cy="60" r="54" style="--p:.208"/>
-              </svg>
-              <div class="g-txt"><b><span class="cnt" data-to="5">5</span></b><small>Stunden</small></div>
-            </div>
-            <p class="range">17:00 – 22:00 Uhr</p>
-            <div class="day" aria-hidden="true"><i style="--s:70.8%;--w:20.8%"></i></div>
-            <div class="ticks" aria-hidden="true"><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span></div>
-          </article>
-          <article class="card spot tilt time reveal from-r">
-            <p class="label">Am Wochenende</p>
-            <div class="gauge">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <circle class="trk" cx="60" cy="60" r="54"/>
-                <circle class="arc soft" cx="60" cy="60" r="54" style="--p:.833"/>
-                <circle class="arc" cx="60" cy="60" r="54" style="--p:.417"/>
-              </svg>
-              <div class="g-txt"><b><span class="cnt" data-to="10">10</span>–<span class="cnt" data-to="20">20</span></b><small>Stunden</small></div>
-            </div>
-            <p class="range">12:00 – 02:00/03:00 Uhr</p>
-            <div class="day" aria-hidden="true"><i class="open" style="--s:50%;--w:50%"></i></div>
-            <div class="ticks" aria-hidden="true"><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span></div>
-          </article>
-        </div>
-      </section>
+          <div class="person">
+            <span class="p-tag">Vorgesetzter</span>
+            <h4>DN 01 · Jonas Rak</h4>
+            <p>Rang 30 · Director of FIB</p>
+            <ul class="chips"><li>Leader/Vize</li><li>Direktorat</li><li>Curator</li></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-      <!-- ERFAHRUNG -->
-      <section id="erfahrung" class="section">
-        <header class="sh">
-          <span class="num" data-speed="0.08">03</span>
-          <div class="sh-t">
-            <h2 class="reveal clip">Erfahrung in <span class="grad">Organisationen</span></h2>
-            <div class="sh-line"></div>
-            <p class="lead">Offizielle sowie inoffizielle Organisationen</p>
-          </div>
-        </header>
+    <!-- BILD-BAND -->
+    <section class="reel" aria-label="Banner">
+      <div class="reel-head">
+        <h2 class="title huge"><span class="ln"><span data-rv>VOM CHAOS.</span></span><span class="ln"><span data-rv class="blue">ZUR ORDNUNG.</span></span></h2>
+      </div>
+      <div class="reel-frame" data-rv>
+        <picture>
+          <source media="(max-width:820px)" srcset="assets/banner-1000.webp" type="image/webp">
+          <source srcset="assets/banner-2172.webp" type="image/webp">
+          <img src="assets/banner.jpg" alt="Lucian Morningstar Banner" width="2172" height="724" loading="lazy" decoding="async">
+        </picture>
+        <span class="rf-ui tl">REC ●</span><span class="rf-ui tr">MIRAGE · DE 01</span><span class="rf-ui bl">LUCIAN MORNINGSTAR</span><span class="rf-ui br">ADMIN · STUFE 2</span>
+      </div>
+    </section>
 
-        <div class="org reveal">
-          <div class="org-tag">FIB</div>
-          <div class="link" aria-hidden="true"><i></i></div>
-          <div class="timeline">
-            <article class="tl-item spot tilt reveal from-l">
-              <span class="dot"></span>
-              <p class="label">Ich</p>
-              <h3>DN: 23 | Lucian Morningstar</h3>
-              <p class="rank">26. | Chief of Integrity</p>
-              <ul class="chips stag">
-                <li>HR-Leitung</li>
-                <li>HR - Division Chief</li>
-                <li>High Command</li>
-                <li>Abteilungsleiter</li>
-              </ul>
-            </article>
-            <article class="tl-item spot tilt reveal from-r">
-              <span class="dot"></span>
-              <p class="label">Vorgesetzter</p>
-              <h3>DN: 01 | Jonas Rak</h3>
-              <p class="rank">30. | Director of FIB</p>
-              <ul class="chips stag">
-                <li>Leader/Vize</li>
-                <li>Direktorat</li>
-                <li>Curator</li>
-              </ul>
-            </article>
-          </div>
-        </div>
+    <!-- 04 MOTIVATION -->
+    <section class="sec" id="motivation">
+      <div class="sec-head">
+        <p class="kicker" data-rv><b>04</b> / Motivation</p>
+        <h2 class="title"><span class="ln"><span data-rv>NICHT NUR MITSPIELEN.</span></span><span class="ln"><span data-rv>SONDERN <span class="blue">MITTRAGEN.</span></span></span></h2>
+      </div>
 
-        <div class="grid three stats">
-          <div class="stat spot reveal">
-            <b><span class="cnt" data-to="1000">1000</span>+</b>
-            <span>Stunden RP-Erfahrung</span>
-            <em class="sbar"><i style="--w:100%"></i></em>
-          </div>
-          <div class="stat spot reveal">
-            <b>~<span class="cnt" data-to="2">2</span></b>
-            <span>Jahre Admin-Erfahrung</span>
-            <em class="sbar"><i style="--w:55%"></i></em>
-          </div>
-          <div class="stat spot reveal">
-            <b><span class="cnt" data-to="4">4</span>+</b>
-            <span>Projekte (GrandRP, Majestic, StageV, Narco City u. a.)</span>
-            <em class="sbar"><i style="--w:78%"></i></em>
-          </div>
-        </div>
-      </section>
-
-      <!-- ÜBER MICH -->
-      <section id="ueber-mich" class="section">
-        <header class="sh">
-          <span class="num" data-speed="0.08">04</span>
-          <div class="sh-t">
-            <h2 class="reveal clip">Über mich: <span class="grad">Warum bewerbe ich mich?</span></h2>
-            <div class="sh-line"></div>
-          </div>
-        </header>
-        <article class="card letter reveal">
-          <p>Guten Tag, liebes Admin-Team,</p>
-          <p>hiermit bewerbe ich, Lucian (Morningstar), mich als <strong>Administrator Stufe 2</strong>.</p>
-          <p>Ich bringe mehrere tausend Stunden RP-Erfahrung aus GrandRP, Majestic und weiteren Projekten mit sowie rund zwei Jahre Admin- und Admin-Leitungserfahrung auf StageV, das heute nicht mehr existiert. Zusätzlich bin ich im FIB als Chief of Integrity, Abteilungsleiter und Teil des High Command tätig und kenne daher Führung, HR-Themen und Verantwortung im Team.</p>
-          <p>Ich möchte nicht dauerhaft nur Spieler sein, sondern aktiv dazu beitragen, dass das Projekt gut läuft: Spielern helfen, Probleme lösen, Fragen beantworten und, wo es sinnvoll ist, den Server und seine Konzepte weiterentwickeln.</p>
-          <p>Meine Stärken sind, Abläufe zu vereinfachen, mich schnell in neue Aufgaben einzuarbeiten und in stressigen Situationen ruhig zu bleiben. Letzteres musste ich früher sehr oft unter Beweis stellen.</p>
-          <p>Mir ist bewusst, dass diese Position viel Verantwortung bedeutet. Ich bin bereit, sie zu übernehmen und dem Vertrauen des Teams gerecht zu werden.</p>
-          <p class="sign">MfG Lucian Morningstar</p>
+      <div class="moti">
+        <article class="letter" data-rv>
+          <p>Hallo liebes Admin-Team,</p>
+          <p>mit diesen Zeilen stelle ich, Lucian (Morningstar), mich für die Position als <strong>Administrator Stufe 2</strong> vor.</p>
+          <p>Hinter mir liegen mehrere tausend Stunden Rollenspiel auf GrandRP, Majestic und weiteren Projekten. Dazu kommen etwa zwei Jahre als Admin und in der Admin-Leitung auf StageV – einem Server, den es inzwischen nicht mehr gibt. Im FIB bin ich aktuell Chief of Integrity, leite eine Abteilung und gehöre zum High Command. Führung, Personalfragen und Verantwortung im Team sind für mich deshalb nichts Neues.</p>
+          <p>Auf Dauer nur Spieler zu sein, reicht mir nicht. Ich möchte aktiv dafür sorgen, dass das Projekt rund läuft: Spielern zur Seite stehen, Probleme klären, Fragen beantworten und – wo es sinnvoll ist – den Server und seine Konzepte weiterbringen.</p>
+          <p>Ich kann Abläufe verschlanken, arbeite mich zügig in Neues ein und behalte auch unter Druck einen kühlen Kopf. Gerade Letzteres musste ich in der Vergangenheit oft genug beweisen.</p>
+          <p>Mir ist klar, wie viel Verantwortung an dieser Rolle hängt. Ich bin bereit, sie zu übernehmen und dem Vertrauen des Teams gerecht zu werden.</p>
+          <p class="sign">Mit freundlichen Grüßen<br><span>Lucian Morningstar</span></p>
         </article>
-      </section>
 
-      <!-- ZUSÄTZLICHES -->
-      <section id="zusatz" class="section">
-        <header class="sh">
-          <span class="num" data-speed="0.08">05</span>
-          <div class="sh-t">
-            <h2 class="reveal clip">Zusätzliche <span class="grad">Informationen</span></h2>
-            <div class="sh-line"></div>
-          </div>
-        </header>
-        <div class="grid three">
-          <article class="card spot tilt reveal">
-            <h3>Regelwerk</h3>
-            <p>Ich kenne das Regelwerk gut und weiß, was im Rollenspiel erlaubt ist und was nicht. Regelverstößen gehe ich bewusst mit großer Distanz aus dem Weg, weil meine Handlungen das Erlebnis anderer Spieler beeinflussen. So wie ich ein gutes Rollenspiel erleben möchte, soll das für jeden anderen Spieler genauso gelten.</p>
-          </article>
-          <article class="card spot tilt reveal" style="--d:.12s">
-            <h3>Vorbereitung</h3>
-            <p>Vor Abschluss dieser Bewerbung habe ich das Regelwerk mehrfach durchgelesen und mir so viel wie möglich eingeprägt. Ich weiß, dass ich nicht alles kenne, aber ich gebe mein Bestes und bin bereit, dazuzulernen und mich laufend zu verbessern.</p>
-          </article>
-          <article class="card spot tilt reveal" style="--d:.24s">
-            <h3>Verantwortung</h3>
-            <p class="q">Wenn ich ein großes Unternehmen hätte, wäre ich bereit, dieses zu verkaufen oder weiterzugeben?</p>
-            <p>Ja, definitiv, da ich weiß, dass jemand anderes damit Spaß haben wird und manche große Entscheidungen im Leben Opfer fordern, und ich bin bereit, diese Opfer zu bringen, solang kein anderer drunter leiden muss oder in irgendeiner Art und Weise zu Schaden kommt.</p>
-          </article>
+        <div class="moti-side">
+          <p class="list-h" data-rv>Was ich mitbringe</p>
+          <ol class="steps">
+            <li data-rv><b>01</b><div><h4>Abläufe vereinfachen</h4><p>Prozesse schlanker und klarer machen.</p></div></li>
+            <li data-rv><b>02</b><div><h4>Schnell eingearbeitet</h4><p>Neue Aufgaben verstehe und übernehme ich zügig.</p></div></li>
+            <li data-rv><b>03</b><div><h4>Ruhe unter Druck</h4><p>Auch in stressigen Momenten sachlich bleiben.</p></div></li>
+            <li data-rv><b>04</b><div><h4>Führungserfahrung</h4><p>Leitung, HR und High Command im FIB.</p></div></li>
+          </ol>
+          <blockquote class="quote" data-rv>
+            <span class="q-mark">“</span>
+            <p>Vom Spieler zum Teil des Teams, das den Server am Laufen hält.</p>
+            <cite>Lucian</cite>
+          </blockquote>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- FAZIT -->
-      <section id="fazit" class="section fazit">
-        <header class="sh">
-          <span class="num" data-speed="0.08">06</span>
-          <div class="sh-t">
-            <h2 class="reveal clip"><span class="grad">Fazit</span></h2>
-            <div class="sh-line"></div>
-          </div>
-        </header>
-        <div class="fazit-box">
-          <p class="reveal">Ich würde mich sehr über ein Gespräch freuen und eine Chance, dem Team und den Spielern zu helfen und ein tolles Rollenspiel für alle bestehenden und noch kommenden Spieler zu ermöglichen.</p>
-          <p class="sign big-sign reveal">MfG Lucian Morningstar</p>
-          <div class="banner reveal">
-            <picture>
-              <source media="(max-width:820px)" srcset="assets/banner-1000.webp" type="image/webp">
-              <source srcset="assets/banner-2172.webp" type="image/webp">
-              <img src="assets/banner.jpg" alt="Lucian Morningstar Banner" width="2172" height="724" loading="lazy" decoding="async">
-            </picture>
-            <span class="shine" aria-hidden="true"></span>
-          </div>
-          <a href="#top" class="btn mag up"><span>Nach oben</span><i>↑</i></a>
+    <!-- 05 HALTUNG -->
+    <section class="sec" id="haltung">
+      <div class="sec-head row-head">
+        <div>
+          <p class="kicker" data-rv><b>05</b> / Haltung</p>
+          <h2 class="title"><span class="ln"><span data-rv>REGELN KENNEN.</span></span><span class="ln"><span data-rv class="blue">REGELN LEBEN.</span></span></h2>
         </div>
-      </section>
-    </div>
+        <p class="sec-lead" data-rv>Weitere Punkte, die mir für diese Rolle wichtig sind.</p>
+      </div>
+
+      <div class="values">
+        <article class="val" data-rv>
+          <span class="v-n">01</span>
+          <h3>Regelwerk</h3>
+          <p>Das Regelwerk kenne ich gut und weiß, wo im Rollenspiel die Grenzen liegen. Regelbrüchen gehe ich ganz bewusst weit aus dem Weg, denn alles, was ich tue, wirkt sich auch auf das Spiel der anderen aus. Ein gutes RP wünsche ich mir selbst – und genauso jedem anderen Spieler.</p>
+        </article>
+        <article class="val" data-rv>
+          <span class="v-n">02</span>
+          <h3>Vorbereitung</h3>
+          <p>Bevor ich diese Bewerbung fertiggestellt habe, bin ich das Regelwerk mehrmals durchgegangen und habe mir so viel wie möglich gemerkt. Alles weiß ich sicher nicht – aber ich gebe mein Bestes, lerne gern dazu und arbeite ständig daran, besser zu werden.</p>
+        </article>
+        <article class="val" data-rv>
+          <span class="v-n">03</span>
+          <h3>Verantwortung</h3>
+          <p class="v-q">Würde ich ein großes eigenes Unternehmen verkaufen oder abgeben?</p>
+          <p>Auf jeden Fall. Ich weiß, dass jemand anderes Freude daran haben wird, und manche großen Entscheidungen im Leben verlangen Opfer. Diese bin ich bereit zu bringen – solange niemand anderes darunter leidet oder auf irgendeine Weise Schaden nimmt.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 06 FAZIT -->
+    <section class="sec contact" id="fazit">
+      <div class="contact-l">
+        <p class="kicker" data-rv><b>06</b> / Fazit</p>
+        <h2 class="title huge"><span class="ln"><span data-rv>LASS UNS</span></span><span class="ln"><span data-rv class="blue">REDEN.</span></span></h2>
+        <p class="contact-txt" data-rv>Über ein Gespräch würde ich mich sehr freuen – und über die Chance, Team und Spielern zur Seite zu stehen und gemeinsam ein starkes Rollenspiel für alle heutigen und künftigen Spieler möglich zu machen.</p>
+        <a href="#top" class="btn ghost" data-rv><span>Zurück nach oben</span><i>↑</i></a>
+      </div>
+
+      <ul class="contact-list">
+        <li data-rv><i>◆</i><div><span>Discord</span><b>noxiryn.tv</b></div></li>
+        <li data-rv><i>◆</i><div><span>Server</span><b>Mirage DE 01</b></div></li>
+        <li data-rv><i>◆</i><div><span>Position</span><b>Administrator Stufe 2</b></div></li>
+        <li data-rv><i>◆</i><div><span>Charakter</span><b>Lucian Morningstar</b></div></li>
+      </ul>
+
+      <div class="contact-card" data-rv>
+        <img src="assets/avatar-480.webp" alt="" width="480" height="480" loading="lazy">
+        <p><span>BEREIT FÜR</span><span class="blue">DIE ROLLE.</span></p>
+        <span class="cc-dot" aria-hidden="true"></span>
+      </div>
+    </section>
   </main>
 
-  <footer>
+  <footer class="foot">
     <picture class="foot-title">
       <source media="(max-width:820px)" srcset="assets/title-340.webp" type="image/webp">
       <img src="assets/title.gif" alt="Lucian Morningstar" width="680" height="240" loading="lazy" decoding="async">
     </picture>
-    <p>Bewerbung · Administrator Stufe 2 · Mirage DE 01 · 2026</p>
+    <div class="foot-row">
+      <a href="#top" class="logo">LUCIAN<span>.</span></a>
+      <p>Bewerbung · Administrator Stufe 2 · Mirage DE 01</p>
+      <p>© 2026</p>
+    </div>
   </footer>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
