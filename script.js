@@ -192,7 +192,7 @@
         p.x += p.vx; p.y += p.vy; p.a -= .022; p.rot += .04;
         if (p.a <= 0) { parts.splice(i, 1); continue; }
         ctx.fillStyle = 'rgba(' + p.hue + ',' + p.a + ')';
-        ctx.shadowColor = 'rgba(31,134,255,' + p.a + ')'; ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgba(109,99,201,' + p.a + ')'; ctx.shadowBlur = 10;
         star(p.x, p.y, p.r, p.rot);
       }
       if (parts.length) requestAnimationFrame(draw); else { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); }
@@ -242,7 +242,7 @@
        ========================================================= */
     var dev = document.createElement('div'); dev.id = 'dev'; dev.setAttribute('aria-hidden', 'true'); body.appendChild(dev);
     var mobile = window.innerWidth < 861;
-    var COLORS = ['#7fd1ff', '#ff9ad5', '#ffe27a', '#9dffb0', '#b69bff', '#5fb6ff', '#ffffff', '#ffb38a'];
+    var COLORS = ['#b6aef0', '#ff9ad5', '#ffe27a', '#9dffb0', '#b69bff', '#9c9fda', '#ffffff', '#ffb38a'];
     var NC = mobile ? 9 : 16;
     var cursors = [];
     var vw0 = window.innerWidth, vh0 = window.innerHeight;
@@ -250,7 +250,7 @@
       var cel = document.createElement('div'); cel.className = 'cur';
       var col = COLORS[ci0 % COLORS.length];
       cel.style.setProperty('--c', col);
-      cel.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 2l7 19 2.6-7.4L20 11z" fill="' + col + '" stroke="#04060c" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+      cel.innerHTML = '<svg viewBox="0 0 24 24"><path d="M3 2l7 19 2.6-7.4L20 11z" fill="' + col + '" stroke="#0d091b" stroke-width="1.6" stroke-linejoin="round"/></svg>';
       dev.appendChild(cel);
       cursors.push({ el: cel, x: vw0 / 2 + (Math.random() - .5) * 60, y: vh0 / 2 + (Math.random() - .5) * 60, tx: 0, ty: 0, k: .08, busy: 0, next: 0, g: ci0 % 3, ph: Math.random() * 6.28, r: 70 + Math.random() * 110 });
     }
@@ -278,7 +278,7 @@
 
     /* ---- Statusleiste ---- */
     var hud = document.createElement('div'); hud.className = 'hud'; hud.setAttribute('aria-hidden', 'true');
-    hud.innerHTML = '<span class="hud-dots"><i style="background:#7fd1ff"></i><i style="background:#ff9ad5"></i><i style="background:#ffe27a"></i><i style="background:#9dffb0"></i></span><b>' + NC + ' Agents</b><span class="hud-sep"></span><span class="hud-l"><b>0</b> / <span>0</span> Ebenen</span><span class="hud-s">scannt …</span>';
+    hud.innerHTML = '<span class="hud-dots"><i style="background:#b6aef0"></i><i style="background:#ff9ad5"></i><i style="background:#ffe27a"></i><i style="background:#9dffb0"></i></span><b>' + NC + ' Agents</b><span class="hud-sep"></span><span class="hud-l"><b>0</b> / <span>0</span> Ebenen</span><span class="hud-s">scannt …</span>';
     body.appendChild(hud);
     var hudL = hud.querySelector('.hud-l b'), hudT = hud.querySelector('.hud-l span'), hudS = hud.querySelector('.hud-s');
     var layers = 0, hudTimer;
