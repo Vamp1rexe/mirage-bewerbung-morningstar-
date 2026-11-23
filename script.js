@@ -422,17 +422,17 @@
 
     /* ---- Code-Fenster ---- */
     var snippets = {
-      top: ['<!-- Bewerbung · Mirage DE 01 -->', '<section class="hero">', '  <p class="script">Hallo, ich bin</p>', '  <h1>Lucian Morningstar.</h1>', '  <p class="role">Administrator / Stufe 2</p>', '  <img src="assets/avatar.webp">', '</section>'],
-      profil: ['<section id="info">', '  <h2>Info <b>Blatt.</b></h2>', '  <dl class="tiles">', '    <dt>Name</dt>      <dd>Noxiryn</dd>', '    <dt>Alter</dt>     <dd>18 Jahre</dd>', '    <dt>Discord</dt>   <dd>noxiryn.tv</dd>', '    <dt>IC-Name</dt>   <dd>Lucian Morningstar</dd>', '    <dt>Cheating-Bans</dt> <dd>Keine</dd>', '  </dl>', '</section>'],
+      top: ['<!-- Bewerbung · Mirage DE 01 -->', '<section class="hero">', '  <p class="script">Hallo, ich bin</p>', '  <h1>Lucian Chen.</h1>', '  <p class="role">Administrator / Stufe 2</p>', '  <img src="assets/avatar.webp">', '</section>'],
+      profil: ['<section id="info">', '  <h2>Info <b>Blatt.</b></h2>', '  <dl class="tiles">', '    <dt>Name</dt>      <dd>Noxiryn</dd>', '    <dt>Alter</dt>     <dd>18 Jahre</dd>', '    <dt>Discord</dt>   <dd>noxiryn.tv</dd>', '    <dt>IC-Name</dt>   <dd>Lucian Chen</dd>', '    <dt>Cheating-Bans</dt> <dd>Keine</dd>', '  </dl>', '</section>'],
       zeiten: ['/* Online-Zeiten */', '.woche {', '  start: 17:00;', '  ende: 22:00;     /* 5 Std. */', '}', '.wochenende {', '  start: 12:00;', '  ende: 02:00/03:00; /* 10–20 Std. */', '}'],
       werdegang: ['const erfahrung = {', '  rp: "GrandRP, Majestic, Narco City u. a.",', '  admin: { server: "StageV", jahre: 2 },', '  fib: {', '    dn: 23, rang: 26,', '    titel: "Chief of Integrity",', '    vorgesetzter: "DN 01 · Jonas Rak"', '  }', '};'],
       motivation: ['<article class="brief">', '  <p>Hallo liebes Admin-Team,</p>', '  <p>… Position <b>Administrator Stufe 2</b> …</p>', '  <ul class="staerken">', '    <li>Abläufe vereinfachen</li>', '    <li>Schnell eingearbeitet</li>', '    <li>Ruhe unter Druck</li>', '  </ul>', '</article>'],
       haltung: ['const zusatz = [', '  "Regelwerk",', '  "Vorbereitung",', '  "Verantwortung"', '];', '', 'zusatz.forEach(p => render(p));'],
-      fazit: ['<section id="fazit">', '  <h2>Fazit.</h2>', '  <p>Über ein Gespräch würde ich mich', '     sehr freuen …</p>', '  <cite>Lucian Morningstar</cite>', '</section>', '<!-- deploy: done ✓ -->']
+      fazit: ['<section id="fazit">', '  <h2>Fazit.</h2>', '  <p>Über ein Gespräch würde ich mich', '     sehr freuen …</p>', '  <cite>Lucian Chen</cite>', '</section>', '<!-- deploy: done ✓ -->']
     };
     snippets['f-all'] = ['// Filter: Alle', 'tiles.forEach(t => t.show());'];
     snippets['f-ooc'] = ['// Filter: OOC', 'tiles', '  .filter(t => t.type === "ooc")', '  .forEach(t => t.show());', '// Name · Alter · Discord'];
-    snippets['f-ic'] = ['// Filter: IC', 'tiles', '  .filter(t => t.type === "ic")', '  .forEach(t => t.show());', '// Lucian Morningstar · ID'];
+    snippets['f-ic'] = ['// Filter: IC', 'tiles', '  .filter(t => t.type === "ic")', '  .forEach(t => t.show());', '// Lucian Chen · ID'];
     snippets['f-req'] = ['// Filter: Voraussetzungen', 'tiles', '  .filter(t => t.type === "req")', '  .forEach(t => t.show());', '// Kontolevel · Bans · Regelbrüche'];
     var files = { 'f-all': 'script.js', 'f-ooc': 'script.js', 'f-ic': 'script.js', 'f-req': 'script.js', top: 'index.html', profil: 'index.html', zeiten: 'style.css', werdegang: 'script.js', motivation: 'index.html', haltung: 'script.js', fazit: 'index.html' };
     function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
